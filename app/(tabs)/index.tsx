@@ -6,10 +6,8 @@ import { View } from "react-native";
 export default function HomeScreen() {
   return (
     <View className="flex-1 justify-center items-center bg-sky-100 px-4">
-      {/* Welcome Message */}
       <WelcomeMessage name="David" />
 
-      {/* Buttons */}
       <View className="mt-6 flex flex-col gap-2 space-y-4">
         <CustomButton
           title="Click Me"
