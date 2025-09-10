@@ -6,7 +6,7 @@
 
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
-// import "../global.css";
+import "../global.css";
 
 // export default function RootLayout() {
 //   const colorScheme = useColorScheme();
@@ -32,13 +32,61 @@
 // }
 
 
-import { Stack } from "expo-router";
+// import { Stack } from "expo-router";
+
+// export default function Layout() {
+//   return (
+//     <Stack>
+//       <Stack.Screen name="index" options={{ title: "Home" }} />
+//       <Stack.Screen name="details" options={{ title: "Details" }} />
+//     </Stack>
+//   );
+// }
+
+// app/_layout.tsx
+import { Ionicons } from "@expo/vector-icons";
+import { Drawer } from "expo-router/drawer";
 
 export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: "Home" }} />
-      <Stack.Screen name="details" options={{ title: "Details" }} />
-    </Stack>
+    <Drawer
+      screenOptions={{
+        headerStyle: { backgroundColor: "#0369a1" },
+        headerTintColor: "#fff",
+        drawerActiveTintColor: "#0369a1",
+        drawerLabelStyle: { fontSize: 16 },
+      }}
+    >
+      <Drawer.Screen
+        name="home"
+        options={{
+          drawerLabel: "Home",
+          title: "🏠 Home",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="profile"
+        options={{
+          drawerLabel: "Profile",
+          title: "👤 Profile",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="settings"
+        options={{
+          drawerLabel: "Settings",
+          title: "⚙️ Settings",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="settings-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </Drawer>
   );
 }
