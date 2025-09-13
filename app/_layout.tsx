@@ -97,6 +97,16 @@ export default function Layout() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="contact"
+        options={{
+          drawerLabel: "ContactList",
+          title: "ContactList",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="call-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer>
   );
 }
