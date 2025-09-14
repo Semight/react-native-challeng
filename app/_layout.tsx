@@ -107,6 +107,16 @@ export default function Layout() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="note"
+        options={{
+          drawerLabel: "NoteList",
+          title: "NoteList",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="book-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer>
   );
 }
