@@ -44,19 +44,33 @@ import "../global.css";
 // }
 
 // app/_layout.tsx
+import { ThemeProvider, useTheme } from "@/components/context/ThemeContext";
 import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
+import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Layout() {
+
+function ThemedStatusBar() {
+  const { theme } = useTheme();
+  return <StatusBar
+  barStyle={theme === "light" ? "dark-content" : "light-content"}
+  backgroundColor={theme === "light" ? "#fff" : "#000"}
+/>;
+}
+
+function ThemedDrawer() {
+  const { theme } = useTheme();
+
   return (
     <Drawer
-      screenOptions={{
-        headerStyle: { backgroundColor: "#0369a1" },
-        headerTintColor: "#fff",
-        drawerActiveTintColor: "#0369a1",
-        drawerLabelStyle: { fontSize: 16 },
-      }}
-    >
+  screenOptions={{
+    headerStyle: { backgroundColor: theme === "light" ? "#0369a1" : "#111" },
+    headerTintColor: "#fff",
+    drawerActiveTintColor: theme === "light" ? "#0369a1" : "#0af",
+    drawerLabelStyle: { fontSize: 16 },
+  }}
+>
       <Drawer.Screen
         name="home"
         options={{
@@ -119,4 +133,17 @@ export default function Layout() {
       />
     </Drawer>
   );
-}
+  }
+
+
+
+  export default function Layout() {
+    return (
+    <ThemeProvider>
+      <SafeAreaProvider>
+        <ThemedStatusBar />
+        <ThemedDrawer />
+      </SafeAreaProvider>
+    </ThemeProvider>
+  );
+  }

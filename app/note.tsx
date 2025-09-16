@@ -1,3 +1,4 @@
+import { useTheme } from "@/components/context/ThemeContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import {
@@ -17,6 +18,8 @@ type Note = {
 export default function NotesApp() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [input, setInput] = useState("");
+
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const loadNotes = async () => {
@@ -59,9 +62,20 @@ export default function NotesApp() {
 
   return (
     <SafeAreaView className="flex-1 bg-white dark:bg-gray-900 p-4">
-      <Text className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-        Notes App
-      </Text>
+      {/* Header with Theme Toggle */}
+      <View className="flex-row justify-between items-center mb-4">
+        <Text className="text-2xl font-bold text-gray-900 dark:text-white">
+          Notes App
+        </Text>
+        <TouchableOpacity
+          onPress={toggleTheme}
+          className="px-3 py-2 bg-gray-300 dark:bg-gray-700 rounded-lg"
+        >
+          <Text className="text-gray-900 dark:text-white">
+            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+          </Text>
+        </TouchableOpacity>
+      </View>
 
       <View className="flex-row mb-4">
         <TextInput
