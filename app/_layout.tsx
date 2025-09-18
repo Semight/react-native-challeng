@@ -45,10 +45,12 @@ import "../global.css";
 
 // app/_layout.tsx
 import { ThemeProvider, useTheme } from "@/components/context/ThemeContext";
+import { store } from "@/store";
 import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
 
 
 function ThemedStatusBar() {
@@ -131,6 +133,26 @@ function ThemedDrawer() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="weather"
+        options={{
+          drawerLabel: "WeatheApp",
+          title: "WeatherApp",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="cloud-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="counter"
+        options={{
+          drawerLabel: "CounterApp",
+          title: "CounterApp",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="calculator-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer>
   );
   }
@@ -139,11 +161,13 @@ function ThemedDrawer() {
 
   export default function Layout() {
     return (
-    <ThemeProvider>
-      <SafeAreaProvider>
-        <ThemedStatusBar />
-        <ThemedDrawer />
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <SafeAreaProvider>
+          <ThemedStatusBar />
+          <ThemedDrawer />
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </Provider>
   );
   }
