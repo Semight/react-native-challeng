@@ -31,7 +31,6 @@ import "../global.css";
 //   );
 // }
 
-
 // import { Stack } from "expo-router";
 
 // export default function Layout() {
@@ -52,122 +51,127 @@ import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 
-
 function ThemedStatusBar() {
   const { theme } = useTheme();
-  return <StatusBar
-  barStyle={theme === "light" ? "dark-content" : "light-content"}
-  backgroundColor={theme === "light" ? "#fff" : "#000"}
-/>;
+  return (
+    <StatusBar
+      barStyle={theme === "light" ? "dark-content" : "light-content"}
+      backgroundColor={theme === "light" ? "#fff" : "#000"}
+    />
+  );
 }
 
-function ThemedDrawer() {
+export default function Layout() {
   const { theme } = useTheme();
 
   return (
-    <Drawer
-  screenOptions={{
-    headerStyle: { backgroundColor: theme === "light" ? "#0369a1" : "#111" },
-    headerTintColor: "#fff",
-    drawerActiveTintColor: theme === "light" ? "#0369a1" : "#0af",
-    drawerLabelStyle: { fontSize: 16 },
-  }}
->
-      <Drawer.Screen
-        name="home"
-        options={{
-          drawerLabel: "Home",
-          title: "🏠 Home",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="profile"
-        options={{
-          drawerLabel: "Profile",
-          title: "👤 Profile",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="settings"
-        options={{
-          drawerLabel: "Settings",
-          title: "⚙️ Settings",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="login"
-        options={{
-          drawerLabel: "Login",
-          title: "Login",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="log-in-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="contact"
-        options={{
-          drawerLabel: "ContactList",
-          title: "ContactList",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="call-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="note"
-        options={{
-          drawerLabel: "NoteList",
-          title: "NoteList",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="book-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="weather"
-        options={{
-          drawerLabel: "WeatheApp",
-          title: "WeatherApp",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="cloud-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="counter"
-        options={{
-          drawerLabel: "CounterApp",
-          title: "CounterApp",
-          drawerIcon: ({ color, size }) => (
-            <Ionicons name="calculator-outline" size={size} color={color} />
-          ),
-        }}
-      />
-    </Drawer>
-  );
-  }
-
-
-
-  export default function Layout() {
-    return (
     <Provider store={store}>
       <ThemeProvider>
         <SafeAreaProvider>
           <ThemedStatusBar />
-          <ThemedDrawer />
+          <Drawer
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: theme === "light" ? "#0369a1" : "#111",
+              },
+              headerTintColor: "#fff",
+              drawerActiveTintColor: theme === "light" ? "#0369a1" : "#0af",
+              drawerLabelStyle: { fontSize: 16 },
+            }}
+          >
+            <Drawer.Screen
+              name="home"
+              options={{
+                drawerLabel: "Home",
+                title: "🏠 Home",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="home-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="profile"
+              options={{
+                drawerLabel: "Profile",
+                title: "👤 Profile",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="person-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="settings"
+              options={{
+                drawerLabel: "Settings",
+                title: "⚙️ Settings",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="settings-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="login"
+              options={{
+                drawerLabel: "Login",
+                title: "Login",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="log-in-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="contact"
+              options={{
+                drawerLabel: "ContactList",
+                title: "ContactList",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="call-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="note"
+              options={{
+                drawerLabel: "NoteList",
+                title: "NoteList",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="book-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="weather"
+              options={{
+                drawerLabel: "WeatheApp",
+                title: "WeatherApp",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="cloud-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="products"
+              options={{
+                drawerLabel: "Products",
+                title: "Products",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="shirt-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="cart"
+              options={{
+                drawerLabel: "Cart",
+                title: "Cart",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="cart-outline" size={size} color={color} />
+                ),
+              }}
+            />
+          </Drawer>
         </SafeAreaProvider>
       </ThemeProvider>
     </Provider>
   );
-  }
+}
