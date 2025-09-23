@@ -169,6 +169,16 @@ export default function Layout() {
                 ),
               }}
             />
+            <Drawer.Screen
+              name="news"
+              options={{
+                drawerLabel: "News",
+                title: "News",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="newspaper-outline" size={size} color={color} />
+                ),
+              }}
+            />
           </Drawer>
         </SafeAreaProvider>
       </ThemeProvider>
