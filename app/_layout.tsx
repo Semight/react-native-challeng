@@ -179,6 +179,16 @@ export default function Layout() {
                 ),
               }}
             />
+            <Drawer.Screen
+              name="notification"
+              options={{
+                drawerLabel: "Notification",
+                title: "Notification",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="notifications-outline" size={size} color={color} />
+                ),
+              }}
+            />
           </Drawer>
         </SafeAreaProvider>
       </ThemeProvider>

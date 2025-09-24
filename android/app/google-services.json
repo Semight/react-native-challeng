@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "619253052255",
+    "project_id": "dayschallenge-759dc",
+    "storage_bucket": "dayschallenge-759dc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619253052255:android:92ca05b44c8caddb763cea",
+        "android_client_info": {
+          "package_name": "com.semight.x30dayschallenge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnIOXsZhR0SmmyPZTpRwmFdEx7RMW5hdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
