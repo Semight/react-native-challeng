@@ -17,7 +17,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.semight.x30dayschallenge"
+      "package": "com.semight.x30dayschallenge",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDpmLjM7ft9TG6zIUsd6vpEEssHMMWhDnY"
+        }
+      }
     },
     "web": {
       "bundler": "metro",

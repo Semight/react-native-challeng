@@ -189,6 +189,16 @@ export default function Layout() {
                 ),
               }}
             />
+            <Drawer.Screen
+              name="map"
+              options={{
+                drawerLabel: "Map",
+                title: "Map",
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="map-outline" size={size} color={color} />
+                ),
+              }}
+            />
           </Drawer>
         </SafeAreaProvider>
       </ThemeProvider>
