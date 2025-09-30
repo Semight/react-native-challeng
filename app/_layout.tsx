@@ -6,51 +6,15 @@
 
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
-import "../global.css";
-
-// export default function RootLayout() {
-//   const colorScheme = useColorScheme();
-//   const [loaded] = useFonts({
-//     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-//   });
-
-//   if (!loaded) {
-//     // Async font loading only occurs in development.
-//     return null;
-//   }
-
-//   return (
-//     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-//       <Stack>
-//         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-//         <Stack.Screen name="todo" />
-//         <Stack.Screen name="+not-found" />
-//       </Stack>
-//       <StatusBar style="auto" />
-//     </ThemeProvider>
-//   );
-// }
-
-// import { Stack } from "expo-router";
-
-// export default function Layout() {
-//   return (
-//     <Stack>
-//       <Stack.Screen name="index" options={{ title: "Home" }} />
-//       <Stack.Screen name="details" options={{ title: "Details" }} />
-//     </Stack>
-//   );
-// }
-
-// app/_layout.tsx
 import { ThemeProvider, useTheme } from "@/components/context/ThemeContext";
 import { store } from "@/store";
 import { Ionicons } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
 import { StatusBar } from "react-native";
-import { Provider as PaperProvider } from "react-native-paper";
+import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
+import "../global.css";
 
 function ThemedStatusBar() {
   const { theme } = useTheme();
@@ -62,14 +26,12 @@ function ThemedStatusBar() {
   );
 }
 
-export default function Layout() {
-  const { theme } = useTheme();
+function AppDrawer() {
+  const { theme, toggleTheme } = useTheme();
+  const paperTheme = theme === "light" ? MD3LightTheme : MD3DarkTheme;
 
   return (
-    <Provider store={store}>
-      <ThemeProvider>
-        <SafeAreaProvider>
-          <PaperProvider>
+          <PaperProvider theme={paperTheme}>
             <ThemedStatusBar />
             <Drawer
               screenOptions={{
@@ -79,6 +41,15 @@ export default function Layout() {
                 headerTintColor: "#fff",
                 drawerActiveTintColor: theme === "light" ? "#0369a1" : "#0af",
                 drawerLabelStyle: { fontSize: 16 },
+                headerRight: () => (
+            <Ionicons
+              name={theme === "light" ? "moon" : "sunny"}
+              size={24}
+              color="#fff"
+              style={{ marginRight: 16 }}
+              onPress={toggleTheme}
+            />
+          ),
               }}
             >
               <Drawer.Screen
@@ -253,6 +224,16 @@ export default function Layout() {
               />
             </Drawer>
           </PaperProvider>
+  );
+}
+
+
+export default function Layout() {
+  return (
+    <Provider store={store}>
+      <ThemeProvider>
+        <SafeAreaProvider>
+          <AppDrawer />
         </SafeAreaProvider>
       </ThemeProvider>
     </Provider>
